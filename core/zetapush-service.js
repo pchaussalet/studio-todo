@@ -78,7 +78,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             this.macroService.on('joinTodoList', function(msg) {
                 console.log(msg);
                 if (msg.data.errors && msg.data.errors.length > 0) {
-                    
+                    self.createTodoList();
                 } else {
                     self.ZPTodoList = msg.data.result.todoList;
                     console.log(self.ZPTodoList);
