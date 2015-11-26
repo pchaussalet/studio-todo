@@ -42,9 +42,9 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             localStorage['resource'] = localStorage['resource'] || zp.makeResourceId();
             this.resourceId = localStorage['resource'];
             
-            this.macroService= new zp.service.Generic('Lghx');
-            this.stackService= new zp.service.Generic('3vJB');
-            this.gdaService= new zp.service.Generic('dX6v');
+            this.macroService = new zp.service.Generic('Lghx');
+            this.stackService = new zp.service.Generic('3vJB');
+            this.gdaService = new zp.service.Generic('dX6v');
 
             zp.onConnected(function(msg) {
                 if (self.auth.getToken()){
@@ -63,6 +63,25 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             zp.init('EX9cA_9n');
             this.auth = new zp.authent.Weak('DyCJ');
             zp.connect(this.auth.getConnectionData(this.token, this.resourceId));
+        }
+    },
+    
+    ensureTodoListExists: {
+        value: function() {
+            var self = this;
+            
+            
+            
+            var data={
+                userName: 'studio-todo'
+            }
+            var params={
+                name: 'createTodoList',
+                debug: 4,
+                parameters: data
+            }
+
+            this.macroService.send('call', params);
         }
     },
     
