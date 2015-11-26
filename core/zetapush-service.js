@@ -14,6 +14,12 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             zp.onConnected(function(msg) {
                 console.log('Connected to ZetaPush');
             });
+            
+            zp.onHandshake(function(msg){			
+                if (msg.successful){
+                    console.log("ZetaPush Hanshake Successful");
+                }
+            });
         }
     },
     
