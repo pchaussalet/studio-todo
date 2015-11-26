@@ -20,10 +20,15 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         value: function Main() {
             this.super();
             Application.zetapushService = new ZetapushService();
-            this.tasksController.addRangeAtPathChangeListener("content", this, "handleContentChange");
         }
     },
 
+    enterDocument: {
+        value: function(firstTime) {
+            this.tasksController.addRangeAtPathChangeListener("content", this, "handleContentChange");
+        }
+    },
+    
     handleClearCompletedButtonAction: {
         value: function (evt) {
             var tasksController = this.templateObjects.tasksController,
