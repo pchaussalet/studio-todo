@@ -53,6 +53,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 }
                 userId = self.auth.getUserId();
                 console.log('Connected to Zetapush with userId:', userId);
+                self.ensureTodoListExists();
             });
             this.connect();
         }
