@@ -11,10 +11,11 @@ var Component = require("montage/ui/component").Component,
  * @extends Component
  */
 exports.Main = Component.specialize(/** @lends Main# */ {
+/*
     tasksController: {
         value: null
     },
-    
+*/    
     constructor: {
         value: function Main() {
             this.super();
