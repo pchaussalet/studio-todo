@@ -9,7 +9,19 @@ var Montage = require("montage/core/core").Montage;
 exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     constructor: {
         value: function ZetapushService() {
-            this.super();
+            var self = this;
+            this.connect();
+            zp.onConnected(function(msg) {
+                self.
+            });
+        }
+    },
+    
+    connect: {
+        value: function() {
+            zp.init('EX9cA_9n');
+            var auth = new zp.authent.Weak('DyCJ');
+            zp.connect(auth.getConnectionData());
         }
     }
 });
