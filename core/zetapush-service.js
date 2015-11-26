@@ -21,13 +21,22 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
 
     constructor: {
         value: function ZetapushService() {
-            var self = this;
-            this.connect();
+            if (!localStorage['resource']){
+                localStorage['resource']= zp.makeResourceId();
+            }
+            this.macroService= new zp.service.Generic('Lghx');
+            this.stackService= new zp.service.Generic('3vJB');
+            this.gdaService= new zp.service.Generic('dX6v');
+
             zp.onConnected(function(msg) {
-                self.macroService= new zp.service.Generic('Lghx');
-                self.stackService= new zp.service.Generic('3vJB');
-                self.gdaService= new zp.service.Generic('dX6v');
+                if (authent.getToken()){
+                    localStorage['token']= authent.getToken();
+                    localStorage['publicToken']= authent.getPublicToken();
+                }
+                userId = authent.getUserId();
+                console.log('You are connected with userId ', authent.getUserId());
             });
+            this.connect();
         }
     },
     
