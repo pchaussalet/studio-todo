@@ -13,5 +13,11 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
         value: function TaskCell() {
             this.super();
         }
+    },
+    
+    handleTextFieldAction: {
+        value: function(event) {
+            console.log(event);
+        }
     }
 });
