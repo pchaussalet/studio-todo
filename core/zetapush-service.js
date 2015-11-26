@@ -48,5 +48,5 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         }
     },
     
-    add
+//    add
 });
