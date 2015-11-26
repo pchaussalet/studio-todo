@@ -2,7 +2,8 @@
  * @module ui/main.reel
  * @requires montage/ui/component
  */
-var Component = require("montage/ui/component").Component;
+var Component = require("montage/ui/component").Component,
+    ZetapushService = require('core/zetapush-service').ZetapushService;
 
 /**
  * @class Main
@@ -19,7 +20,6 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         value: function (evt) {
             var tasksController = this.templateObjects.tasksController,
                 completedTasks = tasksController.getPath("content.filter{completed}");
-
             tasksController.deleteEach(completedTasks);
         }
     }
