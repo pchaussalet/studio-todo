@@ -75,16 +75,17 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         value: function() {
             var self = this;
             
-            this.macroService.on('createTodoList', function(msg) {
+            this.macroService.on('joinTodoList', function(msg) {
                 self.ZPTodoList = msg.data.result.todoList;
                 console.log(self.ZPTodoList);
             });
             
             var params={
-                name: 'createTodoList',
+                name: 'joinTodoList',
                 debug: 4,
                 parameters: {
-                    userName: 'studio-todo'
+                    ownerId: 'studio-todo',
+                    todoListId: 'list01'
                 }
             };
 
