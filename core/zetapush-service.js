@@ -7,6 +7,14 @@ var Montage = require("montage/core/core").Montage;
  * @extends Montage
  */
 exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
+    token: {
+        value: null
+    },
+    
+    publicToken: {
+        value: null
+    },
+    
     resourceId: {
         value: null
     },
