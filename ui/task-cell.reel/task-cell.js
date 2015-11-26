@@ -9,9 +9,18 @@ var Component = require("montage/ui/component").Component;
  * @extends Component
  */
 exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
+    isTitleDirty: {
+        value: false
+    },
+    
     constructor: {
         value: function TaskCell() {
             this.super();
+        }
+    },
+    
+    enterDocument: {
+        value: function(firstTime) {
         }
     },
     
