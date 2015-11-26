@@ -48,7 +48,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         value: function() {
             zp.init('EX9cA_9n');
             this.auth = new zp.authent.Weak('DyCJ');
-            zp.connect(auth.getConnectionData());
+            zp.connect(this.auth.getConnectionData());
         }
     },
     
