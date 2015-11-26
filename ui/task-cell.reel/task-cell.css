@@ -2,6 +2,6 @@
     opacity: 0.2;
 }
 
--Taskcell .dirty {
+.Taskcell .dirty {
     border-color: red;
 }
