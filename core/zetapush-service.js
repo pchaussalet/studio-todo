@@ -34,6 +34,10 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     gdaService: {
         value: null
     },
+    
+    ZPTodoList: {
+        value: null
+    },
 
     constructor: {
         value: function ZetapushService() {
