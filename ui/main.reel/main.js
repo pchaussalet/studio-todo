@@ -39,7 +39,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
     
     handleContentChange: {
         value: function() {
-            console.log(arguments);
+            console.trace(arguments);
         }
     }
 });
