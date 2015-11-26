@@ -3,7 +3,6 @@
  * @requires montage/ui/component
  */
 var Component = require("montage/ui/component").Component,
-    Application = require("montage/core/application").application,
     ZetapushService = require('core/zetapush-service').ZetapushService;
 
 /**
@@ -14,17 +13,23 @@ exports.Main = Component.specialize(/** @lends Main# */ {
     tasksController: {
         value: null
     },
+    
+    zetapushService: {
+        value: null
+    },
 
     constructor: {
         value: function Main() {
             this.super();
-            Application.zetapushService = new ZetapushService();
+            this.zetapushService = new ZetapushService();
         }
     },
 
     enterDocument: {
         value: function(firstTime) {
-            this.tasksController.addRangeAtPathChangeListener("content", this, "handleContentChange");
+            if (firstTime) {
+                this.tasksController.addRangeAtPathChangeListener("content", this, "handleContentChange");
+            }
         }
     },
     
@@ -39,7 +44,9 @@ exports.Main = Component.specialize(/** @lends Main# */ {
     
     handleContentChange: {
         value: function(plus, minus) {
-            console.trace(arguments);
+            if (plus.length > 0) {
+                this.zetapushService. addTodo(plus[0]);
+            }
         }
     }
 });
