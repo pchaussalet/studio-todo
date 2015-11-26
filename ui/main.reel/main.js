@@ -13,6 +13,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
     constructor: {
         value: function Main() {
             this.super();
+            Application.zetapushService = new ZetapushService();
         }
     },
 
@@ -20,6 +21,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         value: function (evt) {
             var tasksController = this.templateObjects.tasksController,
                 completedTasks = tasksController.getPath("content.filter{completed}");
+
             tasksController.deleteEach(completedTasks);
         }
     }
