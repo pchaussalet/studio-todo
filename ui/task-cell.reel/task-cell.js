@@ -15,7 +15,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
         }
     },
     
-    handleTextFieldEvent: {
+    handleEvent: {
         value: function(event) {
             console.log(event);
         }
