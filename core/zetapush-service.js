@@ -57,7 +57,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 }
                 userId = self.auth.getUserId();
                 console.log('Connected to Zetapush with userId:', userId);
-                self.ensureTodoListExists();
+                self.getTodoList();
             });
             this.connect();
         }
@@ -71,13 +71,14 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         }
     },
     
-    ensureTodoListExists: {
+    getTodoList: {
         value: function() {
             var self = this;
             
             this.macroService.on('joinTodoList', function(msg) {
                 console.log(msg);
                 if (msg.data.errors && msg.data.errors.length > 0) {
+                    
                 } else {
                     self.ZPTodoList = msg.data.result.todoList;
                     console.log(self.ZPTodoList);
@@ -89,6 +90,27 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 debug: 4,
                 parameters: {
                     ownerId: 'studio-todo',
+                    todoListId: 'list01'
+                }
+            };
+
+            this.macroService.send('call', params);
+        }
+    },
+    
+    createTodoList: {
+        value: function() {
+            var self = this;
+
+            this.macroService.on('createTodoList', function(msg) {
+                console.log(msg);
+            });
+
+            var params={
+                name: 'createTodoList',
+                debug: 4,
+                parameters: {
+                    userName: 'studio-todo',
                     todoListId: 'list01'
                 }
             };
