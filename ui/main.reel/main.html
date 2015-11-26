@@ -72,7 +72,8 @@
                 "element": {"#": "taskCell"}
             },
             "bindings": {
-                "task": {"<-": "@taskList:iteration.object"}
+                "task": {"<-": "@taskList:iteration.object"},
+                "zetapushService": {"<-": "@owner.zetapushService"}
             }
         },
         "taskList": {
