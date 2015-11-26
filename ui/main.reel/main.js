@@ -11,10 +11,15 @@ var Component = require("montage/ui/component").Component,
  * @extends Component
  */
 exports.Main = Component.specialize(/** @lends Main# */ {
+    tasksController: {
+        value: null
+    },
+    
     constructor: {
         value: function Main() {
             this.super();
             Application.zetapushService = new ZetapushService();
+            this.tasksController.addRangeAtPathChangeListener("content", this, "handleContentChange");
         }
     },
 
@@ -24,6 +29,12 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                 completedTasks = tasksController.getPath("content.filter{completed}");
 
             tasksController.deleteEach(completedTasks);
+        }
+    },
+    
+    handleContentChange: {
+        value: function() {
+            console.log(arguments);
         }
     }
 });
