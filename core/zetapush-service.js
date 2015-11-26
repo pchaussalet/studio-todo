@@ -7,6 +7,10 @@ var Montage = require("montage/core/core").Montage;
  * @extends Montage
  */
 exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
+    auth: {
+        value: null
+    },
+    
     macroService: {
         value: null
     },
@@ -43,7 +47,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     connect: {
         value: function() {
             zp.init('EX9cA_9n');
-            var auth = new zp.authent.Weak('DyCJ');
+            this.auth = new zp.authent.Weak('DyCJ');
             zp.connect(auth.getConnectionData());
         }
     },
