@@ -31,7 +31,14 @@
             },
             "bindings": {
                 "value": {"<->": "@owner.task.title"}
-            }
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": false,
+                    "listener": {"@": "owner"}
+                }
+                ]
         }
     }
     </script>
