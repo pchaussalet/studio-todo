@@ -12,7 +12,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var self = this;
             this.connect();
             zp.onConnected(function(msg) {
-                self.
+                console.log('Connected to ZetaPush');
             });
         }
     },
