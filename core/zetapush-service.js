@@ -74,12 +74,13 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             
             var data={
                 userName: 'studio-todo'
-            }
+            };
+            
             var params={
                 name: 'createTodoList',
                 debug: 4,
                 parameters: data
-            }
+            };
 
             this.macroService.send('call', params);
         }
