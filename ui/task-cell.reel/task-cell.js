@@ -18,6 +18,9 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
             return this.task.title;
         },
         set: function(title) {
+            if (!this.task) {
+                this.task = {};
+            }
             if (this.task.title != title) {
                 this.isTitleDirty = true;
                 this.task.title = title;
