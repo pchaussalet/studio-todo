@@ -40,13 +40,5 @@ exports.Main = Component.specialize(/** @lends Main# */ {
 
             tasksController.deleteEach(completedTasks);
         }
-    },
-    
-    handleContentChange: {
-        value: function(plus, minus) {
-            if (plus.length > 0) {
-                this.zetapushService. addTodo(plus[0]);
-            }
-        }
-    }
+    }    
 });
