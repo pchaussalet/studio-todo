@@ -4,4 +4,5 @@
 
 .TaskCell-title.dirty {
     border-color: red !important;
+    background-image: -webkit-linear-gradient(top, hsl(0,50%,92%), hsl(0,50%,94%));
 }
