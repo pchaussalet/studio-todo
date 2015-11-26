@@ -3,6 +3,7 @@
  * @requires montage/ui/component
  */
 var Component = require("montage/ui/component").Component,
+    Application = require("montage/core/application").application,
     ZetapushService = require('core/zetapush-service').ZetapushService;
 
 /**
