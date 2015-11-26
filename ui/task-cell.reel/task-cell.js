@@ -24,7 +24,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
         set: function(title) {
             if (this.title != title) {
                 this.isTitleDirty = true;
-                this.title = title;
+                this._title = title;
             }
         }
     },
