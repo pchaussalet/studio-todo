@@ -33,7 +33,8 @@
                 "placeholderValue": "Text"
             },
             "bindings": {
-                "value": {"<->": "@owner.task.title"}
+                "value": {"<->": "@owner.task.title"},
+                "classList.has('dirty')": {"<-": "@owner.isTitleDirty"}
             }
         }
     }
