@@ -24,8 +24,9 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
         }
     },
     
-    handleEvent: {
+    handleTextFieldAction: {
         value: function(event) {
+            this.isTitleDirty = false;
             console.log(event);
         }
     }
