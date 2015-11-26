@@ -12,19 +12,15 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     isTitleDirty: {
         value: false
     },
-    _title: {
-        value: null
-    },
-    
     
     title: {
         get: function() {
-            return this._title;
+            return this.task.title;
         },
         set: function(title) {
-            if (this._title != title) {
+            if (this.task.title != title) {
                 this.isTitleDirty = true;
-                this._title = title;
+                this.task.title = title;
             }
         }
     },
