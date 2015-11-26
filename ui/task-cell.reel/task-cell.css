@@ -1,3 +1,7 @@
 .TaskCell--completed {
     opacity: 0.2;
 }
+
+.dirty {
+    border-color: red;
+}
