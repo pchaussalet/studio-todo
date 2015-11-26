@@ -66,5 +66,9 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         }
     },
     
-//    add
+    addTodo: {
+        value: function(todo) {
+            console.log(todo);
+        }
+    }
 });
