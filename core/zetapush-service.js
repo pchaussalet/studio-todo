@@ -7,18 +7,26 @@ var Montage = require("montage/core/core").Montage;
  * @extends Montage
  */
 exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
+    macroService: {
+        value: null
+    },
+
+    stackService: {
+        value: null
+    },
+
+    gdaService: {
+        value: null
+    },
+
     constructor: {
         value: function ZetapushService() {
             var self = this;
             this.connect();
             zp.onConnected(function(msg) {
-                console.log('Connected to ZetaPush');
-            });
-            
-            zp.onHandshake(function(msg){			
-                if (msg.successful){
-                    console.log("ZetaPush Hanshake Successful");
-                }
+                self.macroService= new zp.service.Generic('Lghx');
+                self.stackService= new zp.service.Generic('3vJB');
+                self.gdaService= new zp.service.Generic('dX6v');
             });
         }
     },
@@ -29,5 +37,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var auth = new zp.authent.Weak('DyCJ');
             zp.connect(auth.getConnectionData());
         }
-    }
+    },
+    
+    add
 });
