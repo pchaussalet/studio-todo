@@ -2,6 +2,6 @@
     opacity: 0.2;
 }
 
-.TaskCellTitle.dirty {
+.TaskCell-title.dirty {
     border-color: red;
 }
