@@ -46,7 +46,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     handleTextFieldAction: {
         value: function(event) {
             this.isTitleDirty = false;
-            console.log(event);
+            this.zetapushService.addTodo(this.task);
         }
     }
 });
