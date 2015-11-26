@@ -15,6 +15,10 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     
     title: {
         get: function() {
+            if (!this.task) {
+                this.task = {};
+            }
+
             return this.task.title;
         },
         set: function(title) {
@@ -31,9 +35,6 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     constructor: {
         value: function TaskCell() {
             this.super();
-            if (!this.task) {
-                this.task = {};
-            }
         }
     },
     
