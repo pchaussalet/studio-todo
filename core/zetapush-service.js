@@ -41,7 +41,6 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                     localStorage['publicToken']= self.auth.getPublicToken();
                 }
                 userId = self.auth.getUserId();
-                console.log('You are connected with userId ', self.auth.getUserId());
             });
             this.connect();
         }
