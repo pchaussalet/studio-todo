@@ -48,8 +48,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
 
             zp.onConnected(function(msg) {
                 if (self.auth.getToken()){
-                    localStorage['token']= self.auth.getToken();
-                    localStorage['publicToken']= self.auth.getPublicToken();
+                    self.token = localStorage['token']= self.auth.getToken();
+                    self.publicToken = localStorage['publicToken']= self.auth.getPublicToken();
                 }
                 userId = self.auth.getUserId();
             });
@@ -61,7 +61,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         value: function() {
             zp.init('EX9cA_9n');
             this.auth = new zp.authent.Weak('DyCJ');
-            zp.connect(this.auth.getConnectionData(this.resourceId));
+            zp.connect(this.auth.getConnectionData(this.token, this.resourceId));
         }
     },
     
