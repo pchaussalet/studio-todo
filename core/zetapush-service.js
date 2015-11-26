@@ -7,6 +7,10 @@ var Montage = require("montage/core/core").Montage;
  * @extends Montage
  */
 exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
+    resourceId: {
+        value: null
+    },
+    
     auth: {
         value: null
     },
@@ -27,9 +31,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         value: function ZetapushService() {
             var self = this;
             
-            if (!localStorage['resource']){
-                localStorage['resource']= zp.makeResourceId();
-            }
+            localStorage['resource'] = localStorage['resource'] || zp.makeResourceId();
+            this.resourceId = localStorage['resource'];
             
             this.macroService= new zp.service.Generic('Lghx');
             this.stackService= new zp.service.Generic('3vJB');
