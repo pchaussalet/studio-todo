@@ -38,7 +38,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
     },
     
     handleContentChange: {
-        value: function(plus, minux) {
+        value: function(plus, minus) {
             console.trace(arguments);
         }
     }
