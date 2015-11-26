@@ -11,7 +11,10 @@
             },
             "bindings": {
                 "classList.has('TaskCell--completed')": {"<-": "task.completed"}
-            }
+            },
+            "listeners": [
+                { "type": "action", "listener": {"@": "owner"} }
+            ]
         },
         "checkbox": {
             "prototype": "digit/ui/checkbox.reel",
@@ -31,10 +34,7 @@
             },
             "bindings": {
                 "value": {"<->": "@owner.task.title"}
-            },
-            "listeners": [
-                { "type": "keyup", "listener": {"@": "owner"} }
-            ]
+            }
         }
     }
     </script>
