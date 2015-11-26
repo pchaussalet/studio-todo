@@ -25,14 +25,6 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         }
     },
 
-    enterDocument: {
-        value: function(firstTime) {
-            if (firstTime) {
-                this.tasksController.addRangeAtPathChangeListener("content", this, "handleContentChange");
-            }
-        }
-    },
-    
     handleClearCompletedButtonAction: {
         value: function (evt) {
             var tasksController = this.templateObjects.tasksController,
