@@ -189,12 +189,11 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
 
     addTodo: {
         value: function() {
-            console.log('Adding new todo');
             var self = this,
                 deferred = Promise.defer();
             
             this.stackService.on('push', function(msg) {
-                console.log(msg);
+                console.log('Adding new todo');
                 deferred.resolve(msg.data);
             });
             
