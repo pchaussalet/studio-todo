@@ -88,7 +88,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 if (msg.data && msg.data.result && msg.data.result && msg.data.result.todoList) {
                     for (var i = 0, todoListLength = msg.data.result.todoList.content.length; i < todoListLength; i++) {
                         if (msg.data.result.todoList.content[i].detail.userName === self.todoListName) {
-                            self.ZPTodoList = msg.data.result.todoList.content[i];
+                            self.ZPTodoList = msg.data.result.todoList.content[i].detail;
                             todoListFound = true;
                             break;
                         }
