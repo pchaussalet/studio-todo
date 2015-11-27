@@ -34,19 +34,15 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     return self.zetapushService.getTodoList()
                 })
                 .then(function(todoList) {
-                    console.log(todoList);
                     self.templateObjects.tasksController.content = todoList;
                     self.zetapushService.registerHandler('push', function(data) {
                         self.tasksController.add(data);
                     });
                     self.zetapushService.registerHandler('update', function(data) {
-                        var content = self.tasksController.content;
-                        var updatedEntry = content.filter(function(entry) { return entry.guid && entry.guid === data.guid; })[0];
-                        console.log(JSON.stringify(updatedEntry), JSON.stringify(data));
-                        self.tasksController.delete(updatedEntry);
-                        self.tasksController.add(data);
-//                        updatedEntry.data = data.data;
-                        self.needsDraw = true;
+                        self.zetapushService.getTodoList()
+                        .then(function(todoList) {
+                            self.templateObjects.tasksController.content = todoList;
+                        });
                     });
                 });
             }
