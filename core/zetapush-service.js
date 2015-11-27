@@ -147,7 +147,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 todoListId: this.ZPTodoList.todoListId
             };
             
-            console.log(data);
+            console.log(this.ZPTodoList);
 
             this.macroService.send('call', { name: 'joinTodoList', parameters: data });
             
