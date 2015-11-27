@@ -64,7 +64,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         }
     },
     
-    registerhandler: {
+    registerHandler: {
         value: function(eventName, handler) {
             this.stackService.on(eventName, function(msg) {
                 return handler(msg.data);
