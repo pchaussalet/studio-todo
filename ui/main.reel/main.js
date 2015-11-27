@@ -45,6 +45,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                             return entry.guid && entry.guid === data.guid;
                         })[0];
                         updatedEntry.data.title = data.data.title;
+                        updatedEntry.data.completed = data.data.completed;
                         self.needsDraw = true;
                         console.log(JSON.stringify(self.tasksController.content));
                     });
