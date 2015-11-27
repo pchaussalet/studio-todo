@@ -113,8 +113,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 name: 'createTodoList',
                 debug: 4,
                 parameters: {
-                    userName: 'studio-todo',
-                    todoListId: 'list01'
+                    userName: 'shared-list'
                 }
             };
 
