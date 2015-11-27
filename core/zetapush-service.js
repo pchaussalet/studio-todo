@@ -172,7 +172,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 console.log('loading todos...');
                 var todos = [];
                 for (var i = 0, ZPtodosLength = msg.data.result.content.length; i < ZPtodosLength; i++) {
-                    todos.push(msg.data.result.content[i].data);
+                    todos.push(msg.data.result.content[i]);
                 }
                 deferred.resolve(todos);
             });
