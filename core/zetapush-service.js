@@ -2,7 +2,7 @@
  * @module core/zetapush-service
  */
 var Montage = require("montage/core/core").Montage,
-    Promise = require("montage/core/promise").Promise.Promise;
+    Promise = require("montage/core/promise").Promise;
 /**
  * @class ZetapushService
  * @extends Montage
