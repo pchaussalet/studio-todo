@@ -28,11 +28,18 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     self.zetapushService.getTodoList()
                 })
                 .then(function(todoList) {
-                    this.templateObjects.tasksController.content = todoList;
+                    self.templateObjects.tasksController.content = todoList;
                 });
         }
     },
 
+    enterDocument: {
+        value: function(firstTime) {
+            if (firstTime) {
+            }
+        }
+    },
+    
     handleClearCompletedButtonAction: {
         value: function (evt) {
             var tasksController = this.templateObjects.tasksController,
