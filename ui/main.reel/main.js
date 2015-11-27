@@ -39,6 +39,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         self.tasksController.add(data);
                     });
                     self.zetapushService.registerHandler('update', function(data) {
+                        console.log(self.tasksController.iterations);
                         var updatedEntry = self.tasksController.iterations.filter(function(iteration) { 
                             return iteration.object.guid && iteration.object.guid === data.guid;
                         })[0];
