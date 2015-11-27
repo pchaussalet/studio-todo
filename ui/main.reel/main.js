@@ -39,10 +39,11 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         self.tasksController.add(data);
                     });
                     self.zetapushService.registerHandler('update', function(data) {
-                        self.zetapushService.getTodoList()
-                        .then(function(todoList) {
-                            self.templateObjects.tasksController.content = todoList;
-                        });
+                        var updatedEntry = self.tasksController.iterations.filter(function(iteration) { 
+                            return iteration.object.guid && iteration.object.guid === data.guid;
+                        })[0];
+                        
+                        self.needsDraw = true;
                     });
                 });
             }
