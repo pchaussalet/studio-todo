@@ -20,11 +20,12 @@ exports.Main = Component.specialize(/** @lends Main# */ {
 
     constructor: {
         value: function Main() {
+            var self = this;
             this.super();
             this.zetapushService = new ZetapushService();
             this.zetapushService.connect()
                 .then(function() {
-                    this.zetapushService.getTodoList()
+                    self.zetapushService.getTodoList()
                 });
         }
     },
