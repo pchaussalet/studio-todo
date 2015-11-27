@@ -137,8 +137,13 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 deferred = Promise.defer();
             
             this.macroService.on('joinTodoList', function(msg) {
-                console.log(msg);
                 console.log('todoList joined:', self.todoListName);
+                var params={
+                    owner: msg.data.result.ownerId,
+                    stack: msg.data.result.todoListId
+                }
+                stackService.send('list', params);
+
                 deferred.resolve();
             });
             
