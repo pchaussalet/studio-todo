@@ -52,23 +52,23 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     
     connect: {
         value: function() {
-            var self = this;
-            console.log(Promise);
-            return new Promise(function(resolve, reject) {
-                zp.onConnected(function(msg) {
-                    if (self.auth.getToken()){
-                        self.token = localStorage['token']= self.auth.getToken();
-                        self.publicToken = localStorage['publicToken']= self.auth.getPublicToken();
-                    }
-                    userId = self.auth.getUserId();
-                    console.log('Connected to Zetapush with userId:', userId);
-                    resolve();
-                });
-
-                zp.init('EX9cA_9n');
-                this.auth = new zp.authent.Weak('DyCJ');
-                zp.connect(this.auth.getConnectionData(this.token, this.resourceId));
+            var self = this,
+                deferred = Promise.defer();
+            zp.onConnected(function(msg) {
+                if (self.auth.getToken()){
+                    self.token = localStorage['token']= self.auth.getToken();
+                    self.publicToken = localStorage['publicToken']= self.auth.getPublicToken();
+                }
+                userId = self.auth.getUserId();
+                console.log('Connected to Zetapush with userId:', userId);
+                deferred.resolve();
             });
+
+            zp.init('EX9cA_9n');
+            this.auth = new zp.authent.Weak('DyCJ');
+            zp.connect(this.auth.getConnectionData(this.token, this.resourceId));
+            
+            return deferred.promise;
         }
     },
     
