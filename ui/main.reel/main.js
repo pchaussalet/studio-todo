@@ -42,7 +42,9 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     self.zetapushService.registerHandler('update', function(data) {
                         var updatedEntry = self.tasksController.content.filter(function(entry) { return entry.guid && entry.guid === data.guid; })[0];
                         var index = self.tasksController.content.indexOf(updatedEntry);
+                        console.log(self.tasksController.content[index].data);
                         self.tasksController.content[index].data = data.data;
+                        console.log(self.tasksController.content[index].data);
 //                        updatedEntry.data.title = data.data.title;
 //                        updatedEntry.data.completed = data.data.completed;
                     });
