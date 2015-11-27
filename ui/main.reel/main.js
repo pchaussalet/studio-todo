@@ -22,7 +22,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         value: function Main() {
             this.super();
             this.zetapushService = new ZetapushService();
-            this.zetapushService.conect();
+            this.zetapushService.connect();
         }
     },
 
