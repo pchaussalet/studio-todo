@@ -8,7 +8,7 @@ var Montage = require("montage/core/core").Montage,
  * @extends Montage
  */
 exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
-    listName: {
+    todoListName: {
         get: function() {
             return 'studio-todo-shared'
         }
