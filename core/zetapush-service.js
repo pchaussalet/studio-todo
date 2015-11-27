@@ -10,7 +10,7 @@ var Montage = require("montage/core/core").Montage,
 exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     todoListName: {
         get: function() {
-            return 'studio-todo-shared'
+            return 'pch_test'
         }
     },
     
