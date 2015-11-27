@@ -41,10 +41,20 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         }
     },
     
+    handleAddTaskButtonAction: {
+        value: function(evt) {
+            var self = this;
+            this.zetapushService.addTodo()
+                .then(function(todo) {
+                    self.tasksController.add(todo);
+                });
+        }
+    },
+    
     handleClearCompletedButtonAction: {
         value: function (evt) {
             var tasksController = this.templateObjects.tasksController,
-                completedTasks = tasksController.getPath("content.filter{completed}");
+                completedTasks = tasksController.getPath("content.filter{data.completed}");
 
             tasksController.deleteEach(completedTasks);
         }
