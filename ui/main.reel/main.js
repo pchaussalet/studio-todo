@@ -44,7 +44,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
     handleAddTaskButtonAction: {
         value: function(evt) {
             var self = this;
-            this.zetapushService.addTodo()
+            this.zetapushService.addTodo();
                 .then(function(todo) {
                     self.tasksController.add(todo);
                 });
