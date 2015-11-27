@@ -43,10 +43,10 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         var updatedEntry = self.tasksController.content.filter(function(entry) { return entry.guid && entry.guid === data.guid; })[0];
                         var index = self.tasksController.content.indexOf(updatedEntry);
                         console.log(self.tasksController.content[index].data);
-                        self.tasksController.content[index] = data;
+                        self.tasksController.content[index].data.title = data.data.title;
+                        self.tasksController.content[index].data.completed = data.data.completed;
+//                        self.tasksController.content[index] = data;
                         console.log(self.tasksController.content[index].data);
-//                        updatedEntry.data.title = data.data.title;
-//                        updatedEntry.data.completed = data.data.completed;
                     });
                 });
             }
