@@ -20,22 +20,22 @@ exports.Main = Component.specialize(/** @lends Main# */ {
 
     constructor: {
         value: function Main() {
-            var self = this;
             this.super();
             this.zetapushService = new ZetapushService();
-            this.zetapushService.connect()
-                .then(function() {
-                    self.zetapushService.getTodoList()
-                })
-                .then(function(todoList) {
-                    self.templateObjects.tasksController.content = todoList;
-                });
         }
     },
 
     enterDocument: {
         value: function(firstTime) {
             if (firstTime) {
+                var self = this;
+                this.zetapushService.connect()
+                .then(function() {
+                    self.zetapushService.getTodoList()
+                })
+                .then(function(todoList) {
+                    self.templateObjects.tasksController.content = todoList;
+                });
             }
         }
     },
