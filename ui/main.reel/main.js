@@ -31,7 +31,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                 var self = this;
                 this.zetapushService.connect()
                 .then(function() {
-                    self.zetapushService.getTodoList()
+                    return self.zetapushService.getTodoList()
                 })
                 .then(function(todoList) {
                     console.log(todoList);
