@@ -53,6 +53,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     connect: {
         value: function() {
             var self = this;
+            console.log(Promise);
             return new Promise(function(resolve, reject) {
                 zp.onConnected(function(msg) {
                     if (self.auth.getToken()){
