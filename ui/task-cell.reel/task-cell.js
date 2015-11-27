@@ -16,18 +16,18 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     title: {
         get: function() {
             if (!this.task) {
-                this.task = {};
+                this.task = {data:{}};
             }
 
-            return this.task.title;
+            return this.task.data.title;
         },
         set: function(title) {
             if (!this.task) {
-                this.task = {};
+                this.task = {data: {}};
             }
-            if (this.task.title != title) {
+            if (this.task.data.title != title) {
                 this.isTitleDirty = true;
-                this.task.title = title;
+                this.task.data.title = title;
             }
         }
     },
@@ -35,17 +35,17 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     completed: {
         get: function(){
             if (!this.task) {
-                this.task = {};
+                this.task = {data: {}};
             }
 
-            return this.task.completed;
+            return this.task.data.completed;
         },
         set: function(completed) {
             if (!this.task) {
-                this.task = {};
+                this.task = {data: {}};
             }
-            if (this.task.completed != completed) {
-                this.task.completed = completed;
+            if (this.task.data.completed != completed) {
+                this.task.data.completed = completed;
                 this.zetapushService.addTodo(this.task);
             }
         }
