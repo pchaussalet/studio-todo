@@ -39,6 +39,10 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     self.zetapushService.registerHandler('push', function(data) {
                         self.tasksController.add(data);
                     });
+                    self.zetapushService.registerHandler('update', function(data) {
+                        var updatedEntry = self.tasksController.getPath("content.filter(data.guid = '" + data.guid + "')");
+                        console.log(updatedEntry);
+                    });
                 });
             }
         }
