@@ -42,7 +42,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     self.zetapushService.registerHandler('update', function(data) {
                         console.log(self.tasksController);
                         var updatedEntry = self.tasksController.content.filter(function(entry) { 
-                            return iteration.guid && iteration.guid === data.guid;
+                            return entry.guid && entry.guid === data.guid;
                         })[0];
                         updatedEntry.title = data.data.title;
                         self.needsDraw = true;
