@@ -127,7 +127,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     _createTodoList: {
         value: function() {
             var self = this,
-                deferred = promise.defer();
+                deferred = Promise.defer();
 
             var handler = this.macroService.on('createTodoList', function(msg) {
                 self.macroService.off(handler);
