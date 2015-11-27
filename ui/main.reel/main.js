@@ -44,7 +44,6 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         var updatedEntry = content.filter(function(entry) { return entry.guid && entry.guid === data.guid; })[0];
                         var index = content.indexOf(updatedEntry);
                         content[index].data = data.data;
-                        self.tasksController.clear();
                         self.tasksController.content = content;
                     });
                 });
