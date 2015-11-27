@@ -99,6 +99,15 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         }
     },
     
+    _listTodoLists: {
+        value: function() {
+            macroService.send('call', {
+                name: 'listTodoList',
+                debug: 4
+            });
+        }
+    },
+    
     createTodoList: {
         value: function() {
             var self = this;
