@@ -45,6 +45,14 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     ZPTodoList: {
         value: null
     },
+    
+    stackOwnerId: {
+        value: null
+    },
+    
+    stackId: {
+        value: null
+    },
 
     constructor: {
         value: function ZetapushService() {
@@ -138,13 +146,9 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             
             this.macroService.on('joinTodoList', function(msg) {
                 console.log('todoList joined:', self.todoListName);
-                var params={
-                    owner: msg.data.result.ownerId,
-                    stack: msg.data.result.todoListId
-                }
-                self.stackService.send('list', params);
-
-                deferred.resolve();
+                self.stackOwnerId = msg.data.result.ownerId;
+                self.stackId = msg.data.result.todoListId;
+                deferred.resolve(self._listTodos());
             });
             
             var data = {
@@ -156,6 +160,25 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
 
             this.macroService.send('call', { name: 'joinTodoList', parameters: data });
             
+            return deferred.promise;
+        }
+    },
+    
+    _listTodos: {
+        value: function() {
+            var self = this,
+                deferred = Promise.defer();
+            
+            this.stackService.on('list', function(msg) {
+                console.log(msg);
+            });
+            
+            var params = {
+                owner: this.stackOwnerId,
+                stack: this.stackId
+            };
+            self.stackService.send('list', params);
+
             return deferred.promise;
         }
     },
