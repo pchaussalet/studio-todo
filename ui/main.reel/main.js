@@ -45,7 +45,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         var index = content.indexOf(updatedEntry);
                         content[index].data = data.data;
                         self.tasksController.clear();
-                        self.tasksController.addEach(content);
+                        self.tasksController.content = content;
                     });
                 });
             }
