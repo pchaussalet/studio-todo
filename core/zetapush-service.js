@@ -77,7 +77,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var self = this,
                 deferred = Promise.defer();
             
-            macroService.on('listTodoList', function(msg) {
+            this.macroService.on('listTodoList', function(msg) {
                 var todoListFound = fals;
                 if (msg.data && msg.data.result && msg.data.result && msg.data.result.todoList) {
                     for (var i = 0, todoListLength = msg.data.result.todoList.content.length; i < todoListLength; i++) {
@@ -95,18 +95,13 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 }
             });
             
-            macroService.send('call', { name: 'listTodoList' });
+            this.macroService.send('call', { name: 'listTodoList' });
 
             return deferred.promise;
         }
     },
     
-    _listTodoLists: {
-        value: function() {
-        }
-    },
-    
-    createTodoList: {
+    _createTodoList: {
         value: function() {
             var self = this;
 
