@@ -168,6 +168,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 deferred = Promise.defer();
             
             this.stackService.on('list', function(msg) {
+                console.log(msg.data.result.content);
                 console.log('loading todos...');
                 var todos = [];
                 for (var i = 0, ZPtodosLength = msg.data.result.content.length; i < ZPtodosLength; i++) {
@@ -185,10 +186,22 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             return deferred.promise;
         }
     },
-    
+
     addTodo: {
         value: function(todo) {
-            console.log(todo);
+            console.log('Adding new todo');
+            var params={
+                owner: this.ZPTodoList.owner,
+                stack: this.ZPTodoList.todoListId,
+                data: todo
+            }
+            this.stackService.send('push', params);
+        }
+    },
+
+    saveTodo: {
+        value: function(todo) {
+            console.log('saving todo', todo);
             var params={
                 owner: this.ZPTodoList.owner,
                 stack: this.ZPTodoList.todoListId,
