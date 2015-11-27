@@ -45,9 +45,6 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         value: function(evt) {
             var self = this;
             this.zetapushService.addTodo();
-                .then(function(todo) {
-                    self.tasksController.add(todo);
-                });
         }
     },
     
