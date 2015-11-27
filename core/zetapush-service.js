@@ -41,14 +41,19 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
 
     constructor: {
         value: function ZetapushService() {
-            var self = this;
-            
-            localStorage['resource'] = localStorage['resource'] || zp.makeResourceId();
-            this.resourceId = localStorage['resource'];
+            this.resourceId = localStorage['resource'] = localStorage['resource'] || zp.makeResourceId();
             
             this.macroService = new zp.service.Generic('Lghx');
             this.stackService = new zp.service.Generic('3vJB');
             this.gdaService = new zp.service.Generic('dX6v');
+
+            this.connect();
+        }
+    },
+    
+    connect: {
+        value: function() {
+            var self = this;
 
             zp.onConnected(function(msg) {
                 if (self.auth.getToken()){
@@ -59,12 +64,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 console.log('Connected to Zetapush with userId:', userId);
                 self.getTodoList();
             });
-            this.connect();
-        }
-    },
-    
-    connect: {
-        value: function() {
+            
             zp.init('EX9cA_9n');
             this.auth = new zp.authent.Weak('DyCJ');
             zp.connect(this.auth.getConnectionData(this.token, this.resourceId));
