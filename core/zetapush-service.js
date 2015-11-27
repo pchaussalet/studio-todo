@@ -142,7 +142,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                     owner: msg.data.result.ownerId,
                     stack: msg.data.result.todoListId
                 }
-                stackService.send('list', params);
+                self.stackService.send('list', params);
 
                 deferred.resolve();
             });
