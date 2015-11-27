@@ -32,6 +32,25 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
         }
     },
     
+    completed: {
+        get: function(){
+            if (!this.task) {
+                this.task = {};
+            }
+
+            return this.task.completed;
+        },
+        set: function(completed) {
+            if (!this.task) {
+                this.task = {};
+            }
+            if (this.task.completed != completed) {
+                this.task.completed = completed;
+                this.zetapushService.addTodo(this.task);
+            }
+        }
+    },
+    
     constructor: {
         value: function TaskCell() {
             this.super();
