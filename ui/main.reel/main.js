@@ -47,7 +47,8 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         })[0];
                         updatedEntry.data.title = data.data.title;
                         updatedEntry.data.completed = data.data.completed;
-                        self.tasksController.content = content;
+                        self.tasksController.clear();
+                        self.tasksController.addEach(content);
                         self.needsDraw = true;
                         console.log(JSON.stringify(self.tasksController.content));
                     });
