@@ -170,7 +170,6 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 deferred = Promise.defer();
             
             this.stackService.on('list', function(msg) {
-                console.log(msg);
                 var todos = [];
                 for (var i = 0, ZPtodosLength = msg.data.result.content.length; i < ZPtodosLength; i++) {
                     todos.push(msg.data.result.content[i].data);
