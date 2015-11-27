@@ -46,7 +46,6 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             this.macroService = new zp.service.Generic('Lghx');
             this.stackService = new zp.service.Generic('3vJB');
             this.gdaService = new zp.service.Generic('dX6v');
-
         }
     },
     
