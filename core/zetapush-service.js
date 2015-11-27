@@ -123,6 +123,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     
     _joinTodoList: {
         value: function() {
+            console.log('join todolist');
         }
     },
     
