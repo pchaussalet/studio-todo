@@ -34,6 +34,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     self.zetapushService.getTodoList()
                 })
                 .then(function(todoList) {
+                    console.log(todoList);
                     self.templateObjects.tasksController.content = todoList;
                 });
             }
