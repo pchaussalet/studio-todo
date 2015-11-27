@@ -109,11 +109,12 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     
     _createTodoList: {
         value: function() {
-            var self = this;
+            var self = this,
+                deferred = promise.defer();
 
             this.macroService.on('createTodoList', function(msg) {
                 console.log('todoList created:', self.todoListName);
-                self._joinTodoList();
+                deferred.resolve(self._joinTodoList());
             });
 
             var params={
@@ -125,6 +126,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             };
 
             this.macroService.send('call', params);
+            
+            return deferred.promise;
         }
     },
     
