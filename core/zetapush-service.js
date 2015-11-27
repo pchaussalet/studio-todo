@@ -163,6 +163,12 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
     addTodo: {
         value: function(todo) {
             console.log(todo);
+            var params={
+                owner: this.ZPTodoList.owner,
+                stack: this.ZPTodoList.todoListId,
+                data: todo
+            }
+            this.stackService.send('push', params);
         }
     }
 });
