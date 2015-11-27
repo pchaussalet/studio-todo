@@ -143,7 +143,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             });
             
             var data = {
-                ownerId: this.ZPTodoList.ownerId,
+                ownerId: this.ZPTodoList.owner,
                 todoListId: this.ZPTodoList.todoListId
             };
             
