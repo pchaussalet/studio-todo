@@ -64,8 +64,9 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         }
     },
     
-    init: {
-        value: function() {
+    registerhandler: {
+        value: function(eventName, handler) {
+            this.stackService.on(eventName, handler);
         }
     },
     
@@ -200,12 +201,6 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         value: function() {
             var self = this,
                 deferred = Promise.defer();
-            
-            var handler = this.stackService.on('push', function(msg) {
-                self.stackService.off(handler);
-                console.log('Adding new todo');
-                deferred.resolve(msg.data);
-            });
             
             var params={
                 owner: this.stackOwnerId,
