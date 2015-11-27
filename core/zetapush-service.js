@@ -195,7 +195,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             
             this.stackService.on('push', function(msg) {
                 console.log(msg);
-                deferred.resolve({data: {}});
+                deferred.resolve(msg.data);
             });
             
             var params={
