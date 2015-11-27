@@ -78,7 +78,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 deferred = Promise.defer();
             
             this.macroService.on('listTodoList', function(msg) {
-                var todoListFound = fals;
+                var todoListFound = false;
                 if (msg.data && msg.data.result && msg.data.result && msg.data.result.todoList) {
                     for (var i = 0, todoListLength = msg.data.result.todoList.content.length; i < todoListLength; i++) {
                         if (msg.data.result.todoList.content[i].userName === 'shared-list') {
