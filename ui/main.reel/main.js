@@ -43,7 +43,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         var content = self.tasksController.content;
                         var updatedEntry = content.filter(function(entry) { return entry.guid && entry.guid === data.guid; })[0];
                         updatedEntry.data = data.data;
-                        self.needDraw = true;
+                        self.needsDraw = true;
                     });
                 });
             }
