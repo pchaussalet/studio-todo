@@ -191,8 +191,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         value: function(todo) {
             console.log('Adding new todo');
             var params={
-                owner: this.ZPTodoList.owner,
-                stack: this.ZPTodoList.todoListId,
+                owner: this.stackOwnerId,
+                stack: this.stackId,
                 data: todo
             }
             this.stackService.send('push', params);
@@ -203,11 +203,12 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         value: function(todo) {
             console.log('saving todo', todo);
             var params={
-                owner: this.ZPTodoList.owner,
-                stack: this.ZPTodoList.todoListId,
-                data: todo
+                owner: this.stackOwnerId,
+                stack: this.stackId,
+                guid: todo.guid,
+                data: todo.data
             }
-            this.stackService.send('push', params);
+            this.stackService.send('update', params);
         }
     }
 });

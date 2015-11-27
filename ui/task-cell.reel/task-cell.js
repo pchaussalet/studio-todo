@@ -46,7 +46,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
             }
             if (this.task.data.completed != completed) {
                 this.task.data.completed = completed;
-                this.zetapushService.addTodo(this.task);
+                this.zetapushService.saveTodo(this.task);
             }
         }
     },
@@ -68,7 +68,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     handleTextFieldAction: {
         value: function(event) {
             this.isTitleDirty = false;
-            this.zetapushService.addTodo(this.task);
+            this.zetapushService.saveTodo(this.task);
         }
     }
 });
