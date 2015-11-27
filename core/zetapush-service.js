@@ -64,6 +64,11 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         }
     },
     
+    init: {
+        value: function() {
+        }
+    },
+    
     connect: {
         value: function() {
             var self = this,
@@ -91,7 +96,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var self = this,
                 deferred = Promise.defer();
             
-            this.macroService.on('listTodoList', function(msg) {
+            var handler = this.macroService.on('listTodoList', function(msg) {
+                self.macroService.off(handler);
                 var todoListFound = false;
                 if (msg.data && msg.data.result && msg.data.result && msg.data.result.todoList) {
                     for (var i = 0, todoListLength = msg.data.result.todoList.content.length; i < todoListLength; i++) {
@@ -120,7 +126,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var self = this,
                 deferred = promise.defer();
 
-            this.macroService.on('createTodoList', function(msg) {
+            var handler = this.macroService.on('createTodoList', function(msg) {
+                self.macroService.off(handler);
                 console.log('todoList created:', self.todoListName);
                 deferred.resolve(self._joinTodoList());
             });
@@ -144,7 +151,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var self = this,
                 deferred = Promise.defer();
             
-            this.macroService.on('joinTodoList', function(msg) {
+            var handler = this.macroService.on('joinTodoList', function(msg) {
+                self.macroService.off(handler);
                 console.log('todoList joined:', self.todoListName);
                 self.stackOwnerId = msg.data.result.ownerId;
                 self.stackId = msg.data.result.todoListId;
@@ -167,7 +175,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var self = this,
                 deferred = Promise.defer();
             
-            this.stackService.on('list', function(msg) {
+            var handler = this.stackService.on('list', function(msg) {
+                self.stackService.off(handler);
                 console.log(msg.data.result.content);
                 console.log('loading todos...');
                 var todos = [];
@@ -192,7 +201,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var self = this,
                 deferred = Promise.defer();
             
-            this.stackService.on('push', function(msg) {
+            var handler = this.stackService.on('push', function(msg) {
+                self.stackService.off(handler);
                 console.log('Adding new todo');
                 deferred.resolve(msg.data);
             });
