@@ -95,16 +95,14 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 }
             });
             
+            macroService.send('call', { name: 'listTodoList' });
+
             return deferred.promise;
         }
     },
     
     _listTodoLists: {
         value: function() {
-            macroService.send('call', {
-                name: 'listTodoList',
-                debug: 4
-            });
         }
     },
     
