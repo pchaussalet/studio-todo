@@ -160,7 +160,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 console.log('todoList joined:', self.todoListName);
                 self.stackOwnerId = msg.data.result.ownerId;
                 self.stackId = msg.data.result.todoListId;
-                deferred.resolve(self._listTodos());
+                deferred.resolve(self.listTodos());
             });
             
             var data = {
