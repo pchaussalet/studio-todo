@@ -227,5 +227,17 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             }
             this.stackService.send('update', params);
         }
+        },
+
+    removeTodo: {
+        value: function(todo) {
+            console.log('saving todo', todo);
+            var params={
+                owner: this.stackOwnerId,
+                stack: this.stackId,
+                guid: todo.guid
+            }
+            this.stackService.send('remove', params);
+        }
     }
 });

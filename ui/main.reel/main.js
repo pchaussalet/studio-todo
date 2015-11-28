@@ -67,6 +67,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                 completedTasks = tasksController.getPath("content.filter{data.completed}");
 
             tasksController.deleteEach(completedTasks);
+            this.zetapushService.
         }
     }    
 });
