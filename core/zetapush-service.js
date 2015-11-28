@@ -181,7 +181,6 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             
             var handler = this.stackService.on('list', function(msg) {
                 self.stackService.off(handler);
-                console.log(msg.data.result.content);
                 console.log('loading todos...');
                 var todos = [];
                 for (var i = 0, ZPtodosLength = msg.data.result.content.length; i < ZPtodosLength; i++) {
@@ -208,7 +207,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var params={
                 owner: this.stackOwnerId,
                 stack: this.stackId,
-                data: {data: {}}
+                data: {}
             }
             this.stackService.send('push', params);
             
