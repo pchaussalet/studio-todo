@@ -41,15 +41,17 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     });
                     self.zetapushService.registerHandler('update', function(data) {
                         console.log(JSON.stringify(self.tasksController.content));
+                        var index = self.tasksController.content.filter(function(entry) { 
+                            return entry.guid && entry.guid === data.guid;
+                        }).indexOf(true);
+                        /*
                         var content = self.tasksController.content.slice();
                         var updatedEntry = content.filter(function(entry) { 
                             return entry.guid && entry.guid === data.guid;
                         })[0];
                         var index = content.indexOf(updatedEntry);
+                        */
                         self.tasksController.swap(index, 1, [data]);
-                        
-//                        updatedEntry.data.title = data.data.title;
-//                        updatedEntry.data.completed = data.data.completed;
                         self.needsDraw = true;
                         console.log(JSON.stringify(self.tasksController.content));
                     });
