@@ -45,10 +45,11 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         var updatedEntry = content.filter(function(entry) { 
                             return entry.guid && entry.guid === data.guid;
                         })[0];
-                        updatedEntry.data.title = data.data.title;
-                        updatedEntry.data.completed = data.data.completed;
-                        self.tasksController.clear();
-                        self.tasksController.addEach(content);
+                        var index = content.indexOf(updatedEntry);
+                        self.tasksController.swap(index, 1, data);
+                        
+//                        updatedEntry.data.title = data.data.title;
+//                        updatedEntry.data.completed = data.data.completed;
                         self.needsDraw = true;
                         console.log(JSON.stringify(self.tasksController.content));
                     });
