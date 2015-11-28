@@ -46,7 +46,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                             return entry.guid && entry.guid === data.guid;
                         })[0];
                         var index = content.indexOf(updatedEntry);
-                        self.tasksController.swap(index, 1, data);
+                        self.tasksController.swap(index, 1, [data]);
                         
 //                        updatedEntry.data.title = data.data.title;
 //                        updatedEntry.data.completed = data.data.completed;
