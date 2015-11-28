@@ -174,7 +174,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
         }
     },
     
-    _listTodos: {
+    listTodos: {
         value: function() {
             var self = this,
                 deferred = Promise.defer();
