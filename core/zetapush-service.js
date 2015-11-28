@@ -235,7 +235,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var params={
                 owner: this.stackOwnerId,
                 stack: this.stackId,
-                guid: [todo.guid]
+                guids: [todo.guid]
             }
             this.stackService.send('remove', params);
         }
