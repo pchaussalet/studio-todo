@@ -65,7 +65,8 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                             }
 */
                             console.log(self.todos[index].data);
-                            self.todos[index].data.title = todo.data.title;
+//                            self.todos[index].data.title = todo.data.title;
+                            self.todos.splice(index, 1);
                             console.log(self.todos[index].data);
                             self.needsDraw = true;
                         }
