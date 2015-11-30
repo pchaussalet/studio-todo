@@ -47,12 +47,9 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     self.zetapushService.registerHandler('update', function(todo) {
                         console.log('update', todo);
                         console.log(self.todos.map(function(x) { return x.guid; }), todo.guid)
-                        console.log(self.todos.filter(function(entry) { 
-                            return entry.guid && entry.guid === todo.guid;
-                        }));
                         var index = self.todos.filter(function(entry) { 
                             return entry.guid && entry.guid === todo.guid;
-                        }).indexOf(true);
+                        })[0];
                         console.log(index);
                         self.todos.swap(index, 1, [todo]);
                         self.needsDraw = true;
