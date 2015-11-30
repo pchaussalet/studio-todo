@@ -46,13 +46,19 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     });
                     self.zetapushService.registerHandler('update', function(todo) {
                         console.log('update', todo);
-                        console.log(self.todos.map(function(x) { return x.guid; }), todo.guid)
-                        var index = self.todos.filter(function(entry) { 
-                            return entry.guid && entry.guid === todo.guid;
-                        })[0];
+                        var index = -1;
+                        for (var i = 0, todosLength = self.todos.length; i < todosLength; i++) {
+                            var entry = self.todos[i];
+                            if (entry.guid && entry.guid === todo.guid) {
+                                index = i;
+                                break;
+                            }
+                        }
                         console.log(index);
-                        self.todos.swap(index, 1, [todo]);
-                        self.needsDraw = true;
+                        if (index > -1) {
+                            self.todos.swap(index, 1, [todo]);
+                            self.needsDraw = true;
+                        }
                     });
                 });
             }
