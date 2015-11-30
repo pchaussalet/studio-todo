@@ -10,8 +10,7 @@
     {
         "owner": {
             "properties": {
-                "element": {"#": "main"},
-                "tasksController": {"@": "tasksController"}
+                "element": {"#": "main"}
             }
         },
         "title": {
@@ -42,7 +41,7 @@
                 "element": {"#": "badge"}
             },
             "bindings": {
-                "value": {"<-": "@tasksController.organizedContent.filter{!completed}.length"}
+                "value": {"<-": "@owner.todos.filter{!completed}.length"}
             }
         },
         "clearCompletedButton": {
@@ -53,7 +52,7 @@
                 "label": "Clear Completed"
             },
             "bindings": {
-                "enabled": {"<-": "@tasksController.content.filter{completed}.length > 0"}
+                "enabled": {"<-": "@owner.todos.filter{completed}.length > 0"}
             },
             "listeners": [
                 {
