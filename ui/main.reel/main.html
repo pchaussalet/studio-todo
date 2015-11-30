@@ -14,14 +14,11 @@
                 "tasksController": {"@": "tasksController"}
             }
         },
-        "actionEventListener": {
-            "prototype": "montage/core/event/action-event-listener",
+        "title": {
+            "prototype": "digit/ui/title.reel",
             "properties": {
-                "action": "addContent",
-                "handler": {"@": "tasksController"}
-            },
-            "_dev": {
-                "isHidden": true
+                "element": {"#": "title"},
+                "value": "Things To Do"
             }
         },
         "addTaskButton": {
@@ -66,6 +63,15 @@
                 }
             ]
         },
+        "taskList": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "taskList"}
+            },
+            "bindings": {
+                "content": {"<-": "@owner.todos"}
+            }
+        },
         "taskCell": {
             "prototype": "ui/task-cell.reel",
             "properties": {
@@ -75,25 +81,6 @@
                 "todos": {"<-": "@owner.todos"},
                 "task": {"<-": "@taskList:iteration.object"},
                 "zetapushService": {"<-": "@owner.zetapushService"}
-            }
-        },
-        "taskList": {
-            "prototype": "digit/ui/list.reel",
-            "properties": {
-                "element": {"#": "taskList"}
-            },
-            "bindings": {
-                "content": {"<-": "@owner.todos"}
-            }
-        },
-        "tasksController": {
-            "prototype": "montage/core/range-controller"
-        },
-        "title": {
-            "prototype": "digit/ui/title.reel",
-            "properties": {
-                "element": {"#": "title"},
-                "value": "Things To Do"
             }
         }
     }
