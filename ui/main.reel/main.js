@@ -24,6 +24,10 @@ exports.Main = Component.specialize(/** @lends Main# */ {
             this.zetapushService = new ZetapushService();
         }
     },
+    
+    todos: {
+        value: null
+    },
 
     enterDocument: {
         value: function(firstTime) {
@@ -34,27 +38,17 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     return self.zetapushService.getTodoList()
                 })
                 .then(function(todoList) {
-                    //self.templateObjects.tasksController.content = todoList;
-                    self.templateObjects.tasksController.addEach(todoList);
-                    self.zetapushService.registerHandler('push', function(data) {
-                        self.tasksController.add(data);
+                    self.todos = todoList;                    
+//                    self.templateObjects.tasksController.addEach(todoList);
+                    self.zetapushService.registerHandler('push', function(todo) {
+                        self.todos.push(todo);
                     });
-                    self.zetapushService.registerHandler('remove', function(data) {
-                        self.tasksController.delete(data);
-                    });
-                    self.zetapushService.registerHandler('update', function(data) {
-                        self.tasksController.content = [];
-                        self.zetapushService.listTodos()
-                            .then(function(todoList) {
-                                self.templateObjects.tasksController.addEach(todoList);
-                            });
-                        /*
-                        var index = self.tasksController.content.filter(function(entry) { 
-                            return entry.guid && entry.guid === data.guid;
+                    self.zetapushService.registerHandler('update', function(todo) {
+                        var index = self.todos.filter(function(entry) { 
+                            return entry.guid && entry.guid === todo.guid;
                         }).indexOf(true);
-                        self.tasksController.swap(index, 1, [data]);
+                        self.todos.swap(index, 1, [todo]);
                         self.needsDraw = true;
-                        */
                     });
                 });
             }
