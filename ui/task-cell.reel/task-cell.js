@@ -60,6 +60,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
             return this._task;
         },
         set: function(task) {
+            console.log('update task');
             this._task = task;
             this.needsDraw = true;
         }
