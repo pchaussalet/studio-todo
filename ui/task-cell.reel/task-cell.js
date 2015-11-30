@@ -45,6 +45,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     
     enterDocument: {
         value: function(firstTime) {
+            this.needsDraw = true;
             console.log(firstTime, this.task, this);
         }
     },
