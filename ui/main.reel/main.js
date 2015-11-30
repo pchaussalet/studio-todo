@@ -40,11 +40,9 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                 .then(function(todoList) {
                     self.todos = todoList;                    
                     self.zetapushService.registerHandler('push', function(todo) {
-                        console.log('push', todo);
                         self.todos.push(todo);
                     });
                     self.zetapushService.registerHandler('update', function(todo) {
-                        console.log('update', todo);
                         var index = -1;
                         for (var i = 0, todosLength = self.todos.length; i < todosLength; i++) {
                             var entry = self.todos[i];
@@ -53,13 +51,9 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                                 break;
                             }
                         }
-                        console.log(index);
                         if (index > -1) {
-//                            self.todos[index].title = Date.now();
                             self.todos.splice(index, 0 ,todo);
                             self.todos.splice(index+1, 1);
-                            console.log(self.todos[index]);
-//                            self.needsDraw = true;
                         }
                     });
                 });
