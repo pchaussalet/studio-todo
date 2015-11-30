@@ -59,7 +59,9 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                             self.todos = [];
                             console.log(todo.data)
                             self.todos.push({guid: 'static', data: { title: 'static'}});
-                            console.log('main', self.todos.map(function(x) { return x.data.title; }));
+                            if (self.todos) {
+                                console.log('main', self.todos.map(function(x) { return x.data.title; }));
+                            }
 //                            console.log(self.todos[index].data);
 //                            self.todos[index].data = todo.data;
 //                            console.log(self.todos[index].data);
