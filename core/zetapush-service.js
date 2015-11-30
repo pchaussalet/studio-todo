@@ -222,8 +222,8 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var params={
                 owner: this.stackOwnerId,
                 stack: this.stackId,
-                guid: todo.guid,
-                data: todo.data
+                guid: todo.zp_guid,
+                data: this._makeZPData(todo)
             }
             this.stackService.send('update', params);
         }
@@ -235,9 +235,18 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             var params={
                 owner: this.stackOwnerId,
                 stack: this.stackId,
-                guids: [todo.guid]
+                guids: [todo.zp_guid]
             }
             this.stackService.send('remove', params);
+        }
+    },
+    
+    _makeZPData: {
+        value: function(todo) {
+            return {
+                title: todo.title,
+                completed: todo.completed
+            };
         }
     },
     
