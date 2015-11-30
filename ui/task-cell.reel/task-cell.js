@@ -51,6 +51,20 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
         }
     },
     
+    _task: {
+        value: null
+    },
+    
+    task: {
+        get: function() {
+            return this._task;
+        },
+        set: function(task) {
+            this._task = task;
+            this.needsDraw = true;
+        }
+    },
+    
     constructor: {
         value: function TaskCell() {
             this.super();
