@@ -48,7 +48,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         var index = -1;
                         for (var i = 0, todosLength = self.todos.length; i < todosLength; i++) {
                             var entry = self.todos[i];
-                            if (entry.guid && entry.guid === todo.guid) {
+                            if (entry.zp_guid && entry.zp_guid === todo.zp_guid) {
                                 index = i;
                                 break;
                             }

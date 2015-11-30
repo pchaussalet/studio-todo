@@ -186,13 +186,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 for (var i = 0, ZPtodosLength = msg.data.result.content.length; i < ZPtodosLength; i++) {
                     todos.push(msg.data.result.content[i]);
                 }
-                deferred.resolve(todos.map(function(x) { 
-                    return {
-                        zp_guid: x.guid,
-                        title: x.data.title,
-                        completed: !!x.data.completed
-                    };
-                }));
+                deferred.resolve(todos.map(self._makeTodo));
             });
             
             var params = {
@@ -232,7 +226,7 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
             }
             this.stackService.send('update', params);
         }
-        },
+    },
 
     removeTodo: {
         value: function(todo) {
@@ -243,6 +237,17 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 guids: [todo.guid]
             }
             this.stackService.send('remove', params);
+        }
+    },
+    
+    _makeTodo: {
+        value: function(data) {
+            return {
+                zp_guid: data.guid,
+                title: data.data.title,
+                completed: !!data.data.completed
+            };
+
         }
     }
 });
