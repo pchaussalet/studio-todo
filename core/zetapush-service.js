@@ -186,7 +186,13 @@ exports.ZetapushService = Montage.specialize(/** @lends ZetapushService# */ {
                 for (var i = 0, ZPtodosLength = msg.data.result.content.length; i < ZPtodosLength; i++) {
                     todos.push(msg.data.result.content[i]);
                 }
-                deferred.resolve(todos);
+                deferred.resolve(todos.map(function(x) { 
+                    return {
+                        zp_guid: x.guid,
+                        title: x.data.title,
+                        completed: !!x.data.completed
+                    };
+                }));
             });
             
             var params = {
