@@ -13,18 +13,17 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
         value: false
     },
     
+    task: {
+        value: {
+            data: {}
+        }
+    },
+    
     title: {
         get: function() {
-            if (!this.task) {
-                this.task = {data:{}};
-            }
-
             return this.task.data.title;
         },
         set: function(title) {
-            if (!this.task) {
-                this.task = {data: {}};
-            }
             if (this.task.data.title != title) {
                 this.isTitleDirty = true;
                 this.task.data.title = title;
@@ -34,35 +33,13 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     
     completed: {
         get: function(){
-            if (!this.task) {
-                this.task = {data: {}};
-            }
-
             return this.task.data.completed;
         },
         set: function(completed) {
-            if (!this.task) {
-                this.task = {data: {}};
-            }
             if (this.task.data.completed != completed) {
                 this.task.data.completed = completed;
                 this.zetapushService.saveTodo(this.task);
             }
-        }
-    },
-    
-    _task: {
-        value: null
-    },
-    
-    task: {
-        get: function() {
-            return this._task;
-        },
-        set: function(task) {
-            console.log('update task');
-            this._task = task;
-            this.needsDraw = true;
         }
     },
     
