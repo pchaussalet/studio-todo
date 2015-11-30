@@ -43,23 +43,6 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
         }
     },
     
-    enterDocument: {
-        value: function(firstTime) {
-            if (!firstTime) {
-                for (var i = 0, childrenLength = this.childComponents.length; i < childrenLength; i++) {
-                    this.childComponents[i].needsDraw = true;
-                }
-            }
-            console.log(firstTime, this.task, this, this.iteration);
-        }
-    },
-    
-    draw: {
-        value: function() {
-            console.log('draw', this.task);
-        }
-    },
-    
     handleTextFieldAction: {
         value: function(event) {
             this.isTitleDirty = false;
