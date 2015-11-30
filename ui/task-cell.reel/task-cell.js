@@ -46,7 +46,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     enterDocument: {
         value: function(firstTime) {
             if (!firstTime) {
-                for (var i = 0, clidrenLength = this.childComponents.length; i < childrenLength; i++) {
+                for (var i = 0, childrenLength = this.childComponents.length; i < childrenLength; i++) {
                     this.childComponents[i].needsDraw = true;
                 }
             }
