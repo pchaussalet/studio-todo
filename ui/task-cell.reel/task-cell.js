@@ -50,6 +50,12 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
         }
     },
     
+    draw: {
+        value: function() {
+            console.log('draw', this.task);
+        }
+    },
+    
     handleTextFieldAction: {
         value: function(event) {
             this.isTitleDirty = false;
