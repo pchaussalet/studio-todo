@@ -73,7 +73,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     
     enterDocument: {
         value: function(firstTime) {
-            console.log(firstTime, this.task);
+            console.log(firstTime, this.task.data);
         }
     },
     
