@@ -45,7 +45,11 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     
     enterDocument: {
         value: function(firstTime) {
-            this.needsDraw = true;
+            if (!firstTime) {
+                for (var i = 0, clidrenLength = this.childComponents.length; i < childrenLength; i++) {
+                    this.childComponents[i].needsDraw = true;
+                }
+            }
             console.log(firstTime, this.task, this, this.iteration);
         }
     },
