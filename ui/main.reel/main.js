@@ -58,7 +58,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                             self.todos[index].title = Date.now();
 //                            self.todos.splice(index, 0 ,todo);
 //                            self.todos.splice(index+1, 1);
-                            console.log(self.todos[index].data);
+                            console.log(self.todos[index]);
 //                            self.needsDraw = true;
                         }
                     });
