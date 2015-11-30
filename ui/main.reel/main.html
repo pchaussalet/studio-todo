@@ -80,7 +80,9 @@
             "prototype": "digit/ui/list.reel",
             "properties": {
                 "element": {"#": "taskList"},
-                "contentController": {"@": "tasksController"}
+            },
+            "bindings": {
+                "content": {"<-": "@tasksController.content"}
             }
         },
         "tasksController": {
