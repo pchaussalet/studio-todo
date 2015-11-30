@@ -73,12 +73,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     
     enterDocument: {
         value: function(firstTime) {
-            if (this.todos) {
-                console.log('task',this.todos.map(function(x) { return x.data.title; }));
-            }
-            if (firstTime) {
-                
-            }
+            console.log(firstTime, this.task);
         }
     },
     
