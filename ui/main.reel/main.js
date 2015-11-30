@@ -56,9 +56,9 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         }
                         console.log(index);
                         if (index > -1) {
-                            console.log(self.todos[index]);
+                            console.log(self.todos[index].data);
                             self.todos[index].data = todo.data;
-                            console.log(self.todos[index]);
+                            console.log(self.todos[index].data);
                             self.needsDraw = true;
                         }
                     });
