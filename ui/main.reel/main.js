@@ -56,16 +56,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         }
                         console.log(index);
                         if (index > -1) {
-/*
-                            self.todos = [];
-                            console.log(todo.data)
-                            self.todos.push({guid: 'static', data: { title: 'static'}});
-                            if (self.todos) {
-                                console.log('main', self.todos.map(function(x) { return x.data.title; }));
-                            }
-*/
-//                            self.todos[index].data.title = todo.data.title;
-                            self.todos.push(todo);
+                            self.todos.splice(index, 0 ,todo);
                             self.todos.splice(index, 1);
                             console.log(self.todos[index].data);
                             self.needsDraw = true;
