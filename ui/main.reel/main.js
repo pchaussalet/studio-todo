@@ -56,15 +56,17 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         }
                         console.log(index);
                         if (index > -1) {
+/*
                             self.todos = [];
                             console.log(todo.data)
                             self.todos.push({guid: 'static', data: { title: 'static'}});
                             if (self.todos) {
                                 console.log('main', self.todos.map(function(x) { return x.data.title; }));
                             }
-//                            console.log(self.todos[index].data);
-//                            self.todos[index].data = todo.data;
-//                            console.log(self.todos[index].data);
+*/
+                            console.log(self.todos[index].data);
+                            self.todos[index].data.title = todo.data.title;
+                            console.log(self.todos[index].data);
                             self.needsDraw = true;
                         }
                     });
