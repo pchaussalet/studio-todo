@@ -41,9 +41,11 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                     self.todos = todoList;                    
 //                    self.templateObjects.tasksController.addEach(todoList);
                     self.zetapushService.registerHandler('push', function(todo) {
+                        console.log('push', todo);
                         self.todos.push(todo);
                     });
                     self.zetapushService.registerHandler('update', function(todo) {
+                        console.log('update', todo);
                         var index = self.todos.filter(function(entry) { 
                             return entry.guid && entry.guid === todo.guid;
                         }).indexOf(true);
