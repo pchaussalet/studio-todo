@@ -33,7 +33,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     
     completed: {
         get: function(){
-            return this.task.data.completed;
+            return this.task && this.task.data.completed;
         },
         set: function(completed) {
             if (this.task.data.completed != completed) {
