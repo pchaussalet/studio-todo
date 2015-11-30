@@ -58,7 +58,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         if (index > -1) {
                             self.todos = [];
                             console.log(todo.data)
-                            self.todos.push(todo);
+                            self.todos.push({data: { title: 'static'}});
 //                            console.log(self.todos[index].data);
 //                            self.todos[index].data = todo.data;
 //                            console.log(self.todos[index].data);
