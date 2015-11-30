@@ -54,10 +54,13 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                             }
                         }
                         console.log(index);
+                        var oldTodos = self.todos.slice();
+                        
                         if (index > -1) {
 //                            self.todos[index].title = Date.now();
-                            self.todos.splice(index, 0 ,todo);
-                            self.todos.splice(index+1, 1);
+                            oldTodos.splice(index, 0 ,todo);
+                            oldTodos.splice(index+1, 1);
+                            self.todos = oldTodos;
                             console.log(self.todos[index]);
 //                            self.needsDraw = true;
                         }
