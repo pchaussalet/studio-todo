@@ -57,7 +57,7 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                         console.log(index);
                         if (index > -1) {
                             console.log(self.todos[index]);
-                            self.todos.swap(index, 1, [todo]);
+                            self.todos[index].data = todo.data;
                             console.log(self.todos[index]);
                             self.needsDraw = true;
                         }
