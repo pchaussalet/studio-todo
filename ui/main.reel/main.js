@@ -64,7 +64,6 @@ exports.Main = Component.specialize(/** @lends Main# */ {
                                 console.log('main', self.todos.map(function(x) { return x.data.title; }));
                             }
 */
-                            console.log(self.todos[index].data);
 //                            self.todos[index].data.title = todo.data.title;
                             self.todos.push(todo);
                             self.todos.splice(index, 1);
