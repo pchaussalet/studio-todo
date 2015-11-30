@@ -15,6 +15,7 @@ exports.TaskCell = Component.specialize(/** @lends TaskCell# */ {
     
     title: {
         get: function() {
+            console.log('get title');
             if (!this.task) {
                 this.task = {data:{}};
             }
